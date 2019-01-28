@@ -6,11 +6,12 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
+        
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last #turn /item/vase into vase
-      item_price =  @@items.find{|i| i.price == item_name}
-       if item_price != nil
-        resp.write item_price
+
+       if item = @@items.find{|i| i.name == item_name}
+        resp.write item.price
       else
       resp.write "Item not found"
       resp.status = 400
