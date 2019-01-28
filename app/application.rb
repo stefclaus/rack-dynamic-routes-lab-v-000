@@ -10,8 +10,7 @@ class Application
       item_name = req.path.split("/items/").last #turn /item/vase into vase
       item_price =  @@items.find{|i| i.price == item_price}
        if item_price != nil
-        resp.write "Item price is #{item.price}"
-        resp.write item.price
+        resp.write item_price
       else
       resp.write "Item not found"
       resp.status = 400
